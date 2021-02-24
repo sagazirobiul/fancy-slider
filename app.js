@@ -16,7 +16,9 @@ const KEY = '15674931-a9d714b6e9d654524df198e00&q';
 const showImages = (images) => {
   imagesArea.style.display = 'block';
   gallery.innerHTML = '';
-  // show gallery title //
+
+
+// show gallery title //
   galleryHeader.style.display = 'flex';
   images.forEach(image => {
     let div = document.createElement('div');
@@ -45,8 +47,9 @@ const selectItem = (event, img) => {
   if (item === -1) {
     sliders.push(img);
   } else {
-    sliders.pop(img);
+    sliders.splice(item, 1);
   }
+  document.getElementById('showItem').innerText = sliders.length;
 }
 
 
@@ -149,6 +152,13 @@ const toggleSpinner = () => {
   document.getElementById('imagesContainer').classList.toggle('d-none');
   document.getElementById('spinner').classList.toggle('d-none');
 }
+
+
+// Back button
+document.getElementById('backBtn').addEventListener('click', () => {
+  imagesArea.style.display = 'block';
+  document.querySelector('.main').style.display = 'none';
+})
 
 
 // Error Message //
